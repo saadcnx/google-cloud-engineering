@@ -1,58 +1,62 @@
-# ☁️ GCP DevOps Journey
+# ☁️ GCP Learning Labs
 
-Welcome to my Google Cloud Platform (GCP) learning and DevOps engineering journey.
-
-This repository contains:
-- Practical GCP labs
-- Cloud infrastructure setups
-- Linux administration tasks
-- Docker & Kubernetes deployments
-- Terraform automation
-- CI/CD pipelines
-- Monitoring & logging setups
-- Networking and security configurations
-- Troubleshooting notes
-- Real-world cloud projects
+A hands-on repository documenting my Google Cloud Platform (GCP) learning journey through practical labs, infrastructure setups, cloud projects, and real-world experiments.
 
 ---
 
-# 🚀 Technologies & Tools
+# 🚀 Topics Covered
 
-## Cloud
-- Google Cloud Platform (GCP)
-
-## DevOps
-- Docker
-- Kubernetes (GKE)
+- Compute Engine
+- VPC Networking
+- Cloud Storage
+- IAM & Security
+- Load Balancing
+- Docker on GCP
+- Kubernetes Engine (GKE)
 - Terraform
-- GitHub Actions
-
-## Linux & Networking
-- Ubuntu
-- NGINX
-- SSH
-- Firewall & Networking
-- Bash Scripting
-
-## Monitoring
-- Prometheus
-- Grafana
+- CI/CD Pipelines
+- Monitoring & Logging
+- Linux Administration
+- Cloud Automation
 
 ---
 
-# 📂 Repository Structure
+# 📘 Learning Approach
 
-```bash
-gcp-devops-journey/
-│
-├── compute-engine/
-├── vpc-networking/
-├── cloud-storage/
-├── docker-projects/
-├── kubernetes-gke/
-├── terraform/
-├── ci-cd/
-├── monitoring/
-├── linux-admin/
-├── troubleshooting/
-└── architecture-diagrams/
+This repository includes:
+
+- Step-by-step notes
+- Commands and configurations
+- Infrastructure setup guides
+- Practical projects
+- Troubleshooting documentation
+- Architecture diagrams
+- Deployment workflows
+
+
+---
+# 📈 Current Focus
+
+Currently learning:
+
+- GCP Core Services
+- Networking
+- Terraform
+- Kubernetes
+- Cloud Security
+
+---
+# ⭐ Objective
+
+To become a skilled Cloud & DevOps Engineer capable of building scalable and production-ready cloud infrastructure.
+
+
+---
+
+# 🛠️ Goals
+
+- Build practical cloud engineering skills
+- Learn production-style infrastructure
+- Practice automation and deployment workflows
+- Improve troubleshooting and system administration
+- Create real-world cloud projects
