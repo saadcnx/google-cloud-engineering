@@ -1,0 +1,78 @@
+1. Introduction: The "Why"
+
+Before starting with Google Cloud Platform (GCP), understanding the fundamental questions is essential to becoming a good Cloud Engineer or Cloud Architect.
+Key questions: What is the cloud? Why did we need it? How did it start? How many types of services exist?
+
+The 3 major cloud providers in the market are:
+
+AWS (Amazon Web Services) - #1 Market Leader.
+Microsoft Azure - #2.
+GCP (Google Cloud Platform) - #3.
+
+2. The Problem: Traditional IT Infrastructure (Pre-Cloud Era, ~2000s)
+
+High Upfront Investment (CapEx):
+
+To start an IT company (like Facebook), you had to buy physical servers, storage, network switches, routers, and firewalls.
+This required massive upfront capital (e.g., 5 million to 10 million pkr).
+
+Wasted Resources & No Scalability:
+
+You had to predict capacity. You might buy a server with 2TB storage, but if your app failed, that hardware became "dead stock" (wasted investment) because you couldn't return it.
+Analogy: Old 1GB/2GB memory cards that are useless today because phone storage has evolved, but you still have them lying around.
+
+Maintenance & Manpower (OpEx):
+
+You needed specialized staff: Windows/Linux Admins, Storage Admins, and Network Engineers.
+You required a proper Data Center environment: Air conditioning, clean rooms, 24x7 power.
+
+Downtime Risks:
+
+If a server or router failed at 2 AM, the service went down until a technician could physically fix it.
+During that downtime, customers would go to competitors (e.g., switching from Flipkart to Amazon), causing revenue loss.
+
+3. The Solution: Virtualization (Step 1 towards Cloud)
+
+Concept: A software layer, called a Hypervisor, is installed directly on the physical hardware (before the Operating System).
+Logical Division: The Hypervisor allows you to break down one physical server into multiple Virtual Machines (VMs) .
+
+Resource Sharing:
+
+If your physical server has 200GB RAM and you only need 32GB, you can create smaller VMs (e.g., 80GB, 20GB, 10GB) for other applications.
+This solved the problem of "wasted resources" by allowing one machine to run multiple apps for different teams.
+
+4. The Birth of Cloud Computing (Step 2)
+
+The Gap in Virtualization: You had to be physically present or have direct access to the hardware location to manage VMs. This didn't work for global companies (e.g., an office in Delhi vs. Malaysia).
+The Cloud Concept: The entire virtualized infrastructure was made accessible over the internet.
+
+Simple Definition: Cloud computing is the delivery of computing services—servers, storage, databases, networking, software—over the Internet ("the cloud").
+Analogy: It's like electricity. You don't build a power plant to use a bulb. You just plug in and pay for the units you consume. Similarly, you don't build a data center; you just use resources over the internet and pay for them.
+
+5. The 5 Essential Characteristics of Cloud Computing
+
+On-Demand Self-Service:
+Provision resources automatically without human interaction (like ordering on Swiggy or logging into Gmail anytime, anywhere without an administrator's help).
+
+Broad Network Access:
+Services are available over the network and accessed through standard mechanisms (laptop, mobile, tablet).
+
+Resource Pooling:
+The provider’s computing resources are pooled to serve multiple consumers using a multi-tenant model.
+Analogy: Carpooling. Sharing physical RAM and storage among different users/customers.
+
+Rapid Elasticity:
+You can scale up (increase RAM/storage) or scale down instantly based on demand.
+You don't need to buy a new server; you just "edit" the existing VM configuration and pay the updated price.
+
+Measured Service:
+Cloud systems automatically control and optimize resource use by leveraging a metering capability.
+You pay only for what you use (Pay-as-you-go). If you use a server for 10 minutes, you pay only for 10 minutes.
+
+6. Key Benefits Summary
+
+Pay-As-You-Go: No upfront cost; OpEx model instead of CapEx.
+Startup Revolution: This low-cost entry is why millions of startups exist today; anyone can launch an app with minimal initial investment.
+
+Fully Managed: Like an electricity department fixing faults, the cloud provider manages hardware failures, security, and maintenance.
+
