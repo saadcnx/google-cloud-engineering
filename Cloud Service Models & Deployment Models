@@ -41,9 +41,7 @@ There are three basic types of deployment environments:
 A. Public Cloud:
 
 Concept: Services are owned and operated by a third-party provider and delivered over the internet. Open for everyone to use.
-
 Analogy: Public transport (like a city bus). You buy a ticket, travel, and get off. It's affordable and accessible to all, but you share the space.
-
 Examples: AWS, Microsoft Azure, GCP, Alibaba Cloud.
 
 Security Note: Public Cloud is highly secure. It's a myth that data is automatically unsafe. The provider uses strong encryption and compliances. Just like money is safer in a bank vault than a home safe (even though you don't own the bank), data is highly secure due to professional security management, though ultimate control differs.
@@ -51,15 +49,11 @@ Security Note: Public Cloud is highly secure. It's a myth that data is automatic
 B. Private Cloud:
 
 Concept: Infrastructure exclusively used by a single business or organization. It can be on-premises or hosted by a third party.
-
 Analogy: A personal Toyota Fortuner (SUV). It gives you maximum control and safety, but you pay huge upfront costs (35 lakhs+) and maintenance.
-
 Control: More control and privacy than Public Cloud, but comes with higher costs and effort. You can build one using tools like OpenStack or VMware.
 
 C. Hybrid Cloud:
 
 Concept: A combination of Public and Private cloud environments that work together.
-
 Usage: Companies keep sensitive data/apps in the Private Cloud and use the Public Cloud for less critical resources or burst capacity, balancing cost and security.
-
 Definition: Hybrid itself isn't a specific cloud; it's just the usage of multiple models together.
