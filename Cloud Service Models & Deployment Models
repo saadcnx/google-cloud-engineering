@@ -7,7 +7,6 @@ A. IaaS (Infrastructure as a Service):
 Concept: You rent the IT infrastructure (servers, storage, networking) from the cloud provider.
 Responsibility: The cloud provider manages the physical hardware, virtualization, and networking. You are responsible for the Operating System, middleware, runtime, and your application data.
 Analogy: It's like renting an empty plot of land. The land (infrastructure) is provided, but you have to build the house (OS/Apps) yourself.
-
 GCP Examples: Google Compute Engine (Virtual Machines), Cloud Storage.
 
 B. PaaS (Platform as a Service):
@@ -15,21 +14,15 @@ B. PaaS (Platform as a Service):
 Concept: The provider manages the infrastructure AND the platform (OS, runtime, middleware).
 Responsibility: You only need to bring your application code/data. The provider handles OS updates, patching, and runtime environments.
 Analogy: You move one step up. It’s like having the land and the basic structure of the house built; you just do the interior decoration (your app).
-
 Stack Logic: If you use PaaS, you are automatically using IaaS underneath (but the provider manages it).
-
 GCP Examples: App Engine, Cloud Functions, Cloud Run.
 
 C. SaaS (Software as a Service):
 
 Concept: The provider manages everything (Infrastructure, Platform, and Software). You simply use the software.
-
 Responsibility: You just use the software (login/password). You don't manage anything backend.
-
 Analogy: A fully furnished hotel room. You just check in and use it.
-
 Stack Logic: Using SaaS means you automatically consume PaaS and IaaS (provider-managed).
-
 Examples: Gmail, Google Drive, Google Workspace.
 
 Key "Staircase" Rule:
