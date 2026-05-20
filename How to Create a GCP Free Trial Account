@@ -1,0 +1,53 @@
+1. Pre-Requisites (What You Need)
+
+Before starting, ensure you have the following items ready:
+
+A Gmail Account: A valid Google email ID.
+Debit or Credit Card:
+Visa and Mastercard are accepted. RuPay cards are generally NOT accepted.
+You need a card that supports international/online transactions (RBI guidelines in India).
+You will be charged a small verification amount (typically ₹2 or $1), which is immediately refunded.
+
+2. What You Get (Free Tier Benefits)
+
+When you create a trial account, you receive:
+
+$300 Credits: Valid for 90 Days (previously 12 months, but recently changed to 3 months).
+Auto-Expiry: Credits automatically expire after 90 days. Unused credits don't roll over.
+No Auto-Charge: Google explicitly states, "Not to charge after free trial ends." You are only charged if you manually click the "Activate" button to upgrade to a paid account.
+Free Products: Access to 20+ products with monthly usage limits (e.g., 1 Compute Engine f1-micro instance per month, 1TB Cloud Storage).
+
+
+Verification Charge:
+
+You will receive an OTP from your bank to authorize the transaction. Enter it to verify.
+Survey: Fill out the quick survey about your role/interest (e.g., Student, Learning about Cloud) and click "Done".
+
+4. Post-Creation: Important Warnings
+
+┌──────────────────────────────────────────────────────────────┐
+│                    GCP CONSOLE DASHBOARD                     │
+├──────────────────────────────────────────────────────────────┤
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  Billing Section:                                      │  │
+│  │  Status: Free Trial                                    │  │
+│  │  Credits Remaining: $300                               │  │
+│  │  Days Left: 90                                         │  │
+│  │  ┌──────────────────┐                                  │  │
+│  │  │   ★ ACTIVATE ★   │  <-- DO NOT CLICK THIS!         │  │
+│  │  └──────────────────┘                                  │  │
+│  └────────────────────────────────────────────────────────┘  │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │  Resources Section:                                    │  │
+│  │  Default Project: "My First Project"                   │  │
+│  │  (You can start working inside this immediately)       │  │
+│  └────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────┘
+
+Crucial Warning: The console shows an "Activate" button (to switch to a full paid account). Never click this unless you want to be charged. Just click "Dismiss" or ignore it.
+OTP Auto-Debit Message: After creation, your bank might send an SMS saying "Auto-debit activated for up to ₹75,000/₹1,50,000 for Google Cloud." Do not panic. This is just a maximum upper limit for safety; Google will not charge you unless you manually upgrade the account.
+
+5. Troubleshooting Tips
+Card Declined: This can happen randomly. Try a different card, or wait 24 hours and try again. Even with valid cards, Google sometimes rejects on the first attempt.
+
+Unregistered Failure: If the account creation fails while selecting "Unregistered Individual," retry by selecting "Registered" and entering your PAN number. It validates the identity better.
