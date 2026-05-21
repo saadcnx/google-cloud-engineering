@@ -1,0 +1,131 @@
+1. Compute Options in Google Cloud
+GCP's compute services are categorized as IaaS (Infrastructure as a Service) and Serverless (which fall under PaaS). We are starting with the IaaS pillar.
+
+Compute Service Map:
+
+GOOGLE CLOUD COMPUTE OPTIONS
+├── IAAS (Server-Based)
+│   ├── 1. Compute Engine (Virtual Machines)  ← WE ARE HERE
+│   ├── 2. Kubernetes Engine (GKE)            ← Container Orchestration
+│   └── 3. App Engine                         ← Early PaaS, but managed server
+│
+└── SERVERLESS (PaaS - No server management)
+    ├── 4. Cloud Run
+    ├── 5. Cloud Functions
+    └── 6. App Engine (Flex/Standard)
+
+Compute Engine = Virtual Machine: In GCP terminology, Google calls its VMs "Compute Engine" instances. Other clouds use different names (AWS: EC2, Azure: Virtual Machines).
+Why GCP is Different: Google uses the same infrastructure for GCP that it uses for Gmail, Search, and YouTube. You get the same hardware quality and reliability.
+
+2. Unique GCP Features (Competitive Advantage)
+Custom Machine Types: Unlike other clouds where you pick from a fixed menu, GCP allows you to choose the exact amount of vCPU and RAM you need (using a slider), saving you money if you don't fit a standard size.
+Encryption by Default: GCP encrypts all data at rest by default. In other clouds, this is often optional or requires manual enabling.
+Hypervisor: GCP uses the KVM (Kernel-based Virtual Machine) hypervisor on its backend.
+Comparison: AWS uses Nitro Hypervisor, Azure uses Hyper-V.
+Fast Boot Time: GCP claims the fastest boot time among top cloud providers (approx. 30 seconds).
+Per-Second Billing: GCP was the first cloud to introduce per-second billing (with a 1-minute minimum).
+Example: If you run a VM for 1 min 10 sec, you pay for 1 min 10 sec. If you run it for 30 sec, you pay for 1 min.
+
+3. Virtual Machine Structure (IaaS Hierarchy)
+┌─────────────────────────────────────────────────────────────┐
+│                    DATA CENTER PHYSICAL HOST                │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │  KVM HYPERVISOR                                       │  │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐             │  │
+│  │  │   VM 1   │  │   VM 2   │  │   VM 3   │             │  │
+│  │  │ (ISRO)   │  │ (TCS)    │  │ (YOURS)  │             │  │
+│  │  └──────────┘  └──────────┘  └──────────┘             │  │
+│  └───────────────────────────────────────────────────────┘  │
+│  • Multiple customer VMs run on one physical host.          │
+│  • VMs are completely ISOLATED from each other.             │
+│  • GCP custom-builds most of its hardware (R&D team).       │
+└─────────────────────────────────────────────────────────────┘
+
+4. Two Main Types of Virtual Machines
+
+Predefined Machines: Fixed configurations provided by Google (like a restaurant menu).
+Custom Machines: You define the specific vCPU and RAM (unique to GCP).
+
+A. Predefined Machine Families
+These are categorized into 4 (officially documented) + 1 (special) families.
+
+Visual Diagram of Predefined Families:
+
+┌──────────────────────────────────────────────────────────────────────┐
+│                    PREDEFINED MACHINE FAMILIES                       │
+├────────────── ───┬─────────────────┬────────────────┬────────────────┤
+│  GENERAL         │  COMPUTE        │  MEMORY        │  ACCELERATOR   │
+│  PURPOSE         │  OPTIMIZED      │  OPTIMIZED     │  OPTIMIZED     │
+│  (E2, N2, N2D)   │  (C2, C2D)      │  (M1, M2)      │  (A2)          │
+├──────────────── ─┼─────────────────┼────────────────┼────────────────┤
+│ • Balanced       │ • Highest vCPU  │ • Highest RAM  │ • GPU          │
+│   price/perf     │   per core      │   available    │   attached     │
+│ • Daily tasks    │ • Scientific    │ • In-memory    │ • ML/AI        │
+│ • Web servers    │   modeling      │   databases    │ • Gaming       │
+│ • Back office    │ • High perf.    │ • SAP          │ • Media        │
+│                  │   computing     │ • Large caching│   Transcoding  │
+└───────────── ────┴─────────────────┴────────────────┴────────────────┘
+                           ↑
+                     [Special Case]
+┌──────────────────────────────────────────────┐
+│            SOLE-TENANT NODES                 │
+│  • Dedicated Physical Server for you.        │
+│  • Bring your own license (BYOL).            │
+│  • Maximum isolation (Security/Compliance).  │
+└──────────────────────────────────────────────┘
+
+Family Breakdown (Series):
+
+General Purpose (E2, N2, N2D):
+
+E2: Entry-level, lowest cost. For small tasks, microservices.
+N2: Balanced price/performance. For web serving, backend office.
+N2D: Scale-out optimized, larger workloads.
+
+Compute Optimized (C2, C2D):
+
+Maximum vCPUs. For heavy computational work (scientific modeling, high-performance computing, gaming servers).
+Note: "D" suffix means AMD processor is used.
+
+Memory Optimized (M1, M2):
+
+Maximum RAM (up to 3.75TB+).
+For in-memory databases (SAP HANA), large data processing.
+
+Accelerator Optimized (A2):
+
+Attached GPUs. For Machine Learning, AI training, and video transcoding.
+
+B. Shared-Core Machines
+
+Not a "family" but a special type. You share a physical CPU core with other users temporarily.
+Used for small, short-duration workloads. Very cost-effective.
+
+Example: f1-micro, e2-micro.
+
+C. Sole-Tenant Nodes
+
+A dedicated physical server for your exclusive use.
+
+Why use it?
+
+Bring Your Own License (BYOL): If you have existing Windows or software licenses, you can apply them here to avoid double-paying for licenses in GCP.
+Security/Isolation: To ensure no other customer's VM runs on your hardware.
+
+D. Custom Machine Types
+
+You define exact vCPU and RAM.
+
+Crucial Rules for Custom VMs:
+
+vCPU: Must be even numbers (2, 4, 6, 8... not 5, 7, 9). (Exception: 1 vCPU is allowed).
+RAM: Must be in multiples of 0.25 GB (e.g., 4.5, 4.75, 5.00, 5.25 GB are allowed; 4.7 GB is not).
+Ratio: RAM scales with vCPUs. Higher vCPU limits allow higher RAM ceilings.
+
+5. Local SSD (Temporary Storage)
+Definition: Directly attached, physically local storage to the physical host. # we cant run OS in local SSD
+Persistence: Data is ephemeral (deleted if the VM is stopped or terminated).
+
+Usage: Ideal for temporary scratch space, cache, or high-speed processing where data loss is acceptable.
+Sizes: 375GB min to 3TB max per disk. Cannot be used to boot the OS.
+
