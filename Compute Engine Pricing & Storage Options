@@ -1,0 +1,118 @@
+1. Compute Engine Pricing Models
+There are three main purchasing options for VMs in GCP, similar to AWS Reserved/On-Demand instances but with unique GCP twists.
+
+Pricing Overview Diagram:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                  GCP PRICING MODELS FOR VMs                         │
+├───────────────────┬───────────────────┬─────────────────────────────┤
+│  SUSTAINED USE    │  COMMITTED USE    │  PREEMPTIBLE (SPOT)         │
+│  DISCOUNT         │  DISCOUNT         │  VMs                        │
+├───────────────────┼───────────────────┼─────────────────────────────┤
+│ • Automatic       │ • 1 or 3 year     │ • Up to 91% discount        │
+│ • No upfront      │   commitment      │ • Max 24 hours runtime      │
+│ • Up to 30% off   │ • Up to 70% off   │ • Can be terminated         │
+│ • Based on usage  │ • Fixed monthly   │   anytime (30s notice)      │
+│   per month       │   bill (Use or    │ • No SLA guarantee          │
+│                   │   not)            │                             │
+└───────────────────┴───────────────────┴─────────────────────────────┘
+
+A. Sustained Use Discount (SUD)
+
+How it works: Applied automatically. No upfront payment or reservation needed.
+Tiered Discount: The more you run a specific VM within a month, the higher the discount.
+
+If you run a VM for 25% of the month -> ~20% discount.
+If you run for 50% -> ~25% discount.
+If you run for 100% (whole month) -> ~30% max discount.
+
+Scope: Applies only to vCPU and Memory costs. License fees (e.g., Windows OS) are NOT discounted.
+Eligible Families: General Purpose (N2, N2D) and Compute Optimized get up to 20-30% max. Memory Optimized and Accelerator families have different limits.
+
+Limitations:
+
+Does not apply to VMs created via App Engine or GKE.
+Does not apply to certain shared-core machine types (f1-micro, e2-micro).
+
+B. Committed Use Discount (CUD)
+
+How it works: You commit to a 1-year or 3-year term. Pay a fixed monthly price regardless of actual usage.
+Benefit: Much higher discounts (up to 57%-70% depending on machine family). Memory Optimized types get the highest (70%).
+Key Point: Unlike AWS Reserved Instances, no upfront payment is required in GCP. You just pay the discounted monthly bill.
+
+Limitations:
+
+Free Trial accounts (with no payment history) are not eligible.
+Cannot be applied to Preemptible VMs.
+Commitment is locked; you cannot cancel or downgrade mid-term.
+The commitment is bound to a specific project (not transferable).
+
+C. Preemptible VMs (Spot VMs)
+
+Concept: GCP sells its idle/unused data center capacity at a massive discount (up to 91%).
+
+Analogy:
+
+A train leaves at 9 AM. If a seat is empty, the railway offers it at 50% off just to fill it.
+Hotels offer huge discounts at night because empty rooms generate zero revenue.
+Similarly, GCP rents out idle hardware at a steep discount.
+
+Key Risks & Rules:
+
+GCP can terminate your VM anytime it needs the capacity back (with a 30-second warning).
+
+Maximum runtime: 24 hours. The VM is automatically stopped/killed after 24 hours.
+No SLA: Google provides no guarantee of availability.
+No charge if Google terminates the VM in the first minute.
+No Live Migration: Preemptible VMs cannot be migrated to regular VMs and vice versa.
+
+Free Trial Credits cannot be used to purchase Preemptible VMs.
+Use Case: Stateless, fault-tolerant batch processing, rendering jobs, testing workloads. Never use for production databases.
+
+2. Storage Options for Compute Engine
+When you create a VM, you attach disks to it. GCP offers Block Storage (Persistent Disks) and Object Storage.
+
+Storage Types Diagram:
+
+STORAGE FOR COMPUTE ENGINE
+├── BLOCK STORAGE (Bootable - OS can be installed)
+│   ├── 1. Persistent Disk Standard (HDD - Low cost)
+│   ├── 2. Persistent Disk Balanced (SSD - Mid-tier)
+│   ├── 3. Persistent Disk Performance (SSD - High IOPS)
+│   └── 4. Persistent Disk Extreme (SSD - Highest IOPS, Min 500GB)
+│
+├── LOCAL STORAGE (Temporary)
+│   └── Local SSD (Physically attached, ephemeral, high speed)
+│
+└── OBJECT STORAGE (Not Bootable - No OS)
+    └── Cloud Storage (Buckets - Data storage/archival)
+
+A. Persistent Disks (Block Storage)
+Definition: Network-attached durable storage. Data persists even if the VM is deleted.
+
+Types (4 variants):
+
+Standard: HDD-based. Cheapest, lowest IOPS.
+Balanced: SSD-based. Cost-effective, medium performance.
+Performance (SSD): Higher IOPS for databases and enterprise apps.
+Extreme: Highest IOPS/Throughput. Minimum 500GB required. For SAP HANA, heavy transactional workloads.
+
+Key Features:
+
+Bootable: All 4 types can be used as a boot disk.
+Resizing: You can only increase disk size, never decrease it.
+Performance Scaling: IOPS and throughput scale automatically with the disk size.
+
+Zonal vs Regional:
+
+Zonal: Data in a single zone. Cost-effective.
+Regional: Data replicated synchronously to two zones within a region. Provides automatic failover (if one zone fails, the disk survives).
+
+B. Local SSDs (Ephemeral Storage)
+Definition: Directly attached physical storage located on the same hardware rack as the VM.
+Benefit: Extremely high IOPS and low latency.
+Critical Drawback: Data is ephemeral (temporary) . It is wiped completely when the VM is stopped or terminated.
+
+Reason: When you stop a VM, Google reclaims the physical resources. When you start it again, it might run on a different physical host. The Local SSD stays with the old host; you get a fresh one on the new host.
+
+Use Case: Scratch space, temporary caches, high-speed processing where data loss is acceptable. Never store critical data.
